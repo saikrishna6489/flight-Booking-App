@@ -46,6 +46,7 @@ public class Book3Controller extends HttpServlet {
 		HttpSession booksession= request.getSession(false);
 		int flightid = (int) booksession.getAttribute("flightid");
 		user user = (user) booksession.getAttribute("user");
+		int userid = user.getId();
 		int personsno = (int) booksession.getAttribute("tpersons");
 		String bookingtime = bookingDao.timenow();
 		String bookingemail = user.getEmail();
@@ -54,10 +55,12 @@ public class Book3Controller extends HttpServlet {
 		Date traveldate = flightdetail.getTraveldate();
 		String cardno = request.getParameter("card");
 		
-		bookingDao.bookticket(flightid, bookingemail, traveldate, personsno, bookingtime, cardno);
+		bookingDao.bookticket(flightid, userid, bookingemail, traveldate, personsno, bookingtime, cardno);
 		booking bookingdetail = bookingDao.bookingdetailbyemailandtime(bookingemail, bookingtime);
 		
 		int bookingid = bookingdetail.getId();
+		int rate = Integer.parseInt(flightdetail.getTicketprice());
+		int ticrate = rate*personsno;
 		
 		for(int i=1;i<personsno+1;i++) {
 			String fn = String.format("firstname%s", i);
@@ -76,6 +79,8 @@ public class Book3Controller extends HttpServlet {
 		request.setAttribute("bookingdetail", bookingdetail);
 		request.setAttribute("personsno", personsno);
 		request.setAttribute("user", user);
+		request.setAttribute("personslist", personslist);
+		request.setAttribute("ticrate", ticrate);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("bookingsuccesspage.jsp");
 		dispatcher.forward(request, response);
 	}

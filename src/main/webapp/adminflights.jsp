@@ -51,7 +51,14 @@
 </head>
 <body>
 <body>
+		<%
+		String si=(String)session.getAttribute("isAdmin");
+		if(si!=null)
+		{
+		%>
+	<%@ include file = "header.jsp" %>
 	<div class="contain1">
+	<h3><c:out value="${isAdmin}"/></h3>
 		<div class="row">
 			<div class = "col-4">
 				<a class="btn btn-primary btn-lg btn-block" href="Adminflights">master list of flights</a>
@@ -98,5 +105,11 @@
               </div>
 		</div>
 	</div>
+<%}
+		else
+		{
+			response.sendRedirect("login.jsp");
+		}
+%>
 </body>
 </html>

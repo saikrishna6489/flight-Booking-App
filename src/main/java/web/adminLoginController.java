@@ -42,6 +42,7 @@ public class adminLoginController extends HttpServlet {
 
 		if (adminDao.validate(username, password)) {
 			HttpSession adminsession= request.getSession();
+			adminsession.setAttribute("isAdmin", "yes");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
 			dispatcher.forward(request, response);
 		}else {

@@ -24,6 +24,9 @@ public class booking implements Serializable {
 	@Column(name = "flightid")
 	private int flightid;
 	
+	@Column(name = "userid")
+	private int userid;
+	
 	@Column(name = "bookingemail")
 	private String bookingemail;
 	
@@ -43,16 +46,25 @@ public class booking implements Serializable {
 	public booking() {
 		super();
 	}
-	
-	public booking(int flightid, String bookingemail, Date traveldate, int personsno, String bookingtime,
+
+	public booking(int flightid, int userid, String bookingemail, Date traveldate, int personsno, String bookingtime,
 			String cardno) {
 		super();
 		this.flightid = flightid;
+		this.userid = userid;
 		this.bookingemail = bookingemail;
 		this.traveldate = traveldate;
 		this.personsno = personsno;
 		this.bookingtime = bookingtime;
 		this.cardno = cardno;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getFlightid() {
@@ -61,6 +73,14 @@ public class booking implements Serializable {
 
 	public void setFlightid(int flightid) {
 		this.flightid = flightid;
+	}
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 
 	public String getBookingemail() {
@@ -102,10 +122,5 @@ public class booking implements Serializable {
 	public void setCardno(String cardno) {
 		this.cardno = cardno;
 	}
-
-	public int getId() {
-		return id;
-	}
-	
 	
 }

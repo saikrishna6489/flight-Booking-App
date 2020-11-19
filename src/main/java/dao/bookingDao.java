@@ -60,10 +60,10 @@ public class bookingDao {
         String time=dateFormat.format(date);
         return time;
     }
-	public static void bookticket(int flightid, String bookingemail, Date traveldate, int personsno, String bookingtime, String cardno){
+	public static void bookticket(int flightid, int userid, String bookingemail, Date traveldate, int personsno, String bookingtime, String cardno){
 		Transaction transaction = null;
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
-    		booking ticket = new booking(flightid, bookingemail, traveldate, personsno, bookingtime, cardno);
+    		booking ticket = new booking(flightid, userid, bookingemail, traveldate, personsno, bookingtime, cardno);
 
     		session.beginTransaction();
     		
@@ -113,6 +113,25 @@ public class bookingDao {
 			e.printStackTrace();
 		}
 		return persons;
+	}
+	public static List<booking> selectbookingsbyuserid(int id){
+		Transaction transaction = null;
+		List<booking> bookings = null;
+		try (Session session = HibernateMain.getSessionFactory().openSession()) {
+
+			transaction = session.beginTransaction();
+			
+			Query query = session.createQuery("from booking as b where b.userid=:idParam");
+			query.setParameter("idParam", id);
+			
+			bookings = query.getResultList();
+			transaction.commit();
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return bookings;
 	}
 	
 	public static List<flight> selectQueryflights(String travelfrom, String travelto, Date date){

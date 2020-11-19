@@ -31,9 +31,6 @@ public class flight implements Serializable {
 	@Type(type="date")
 	private Date traveldate;
 	
-	@Column(name = "traveltime")
-	private String traveltime;
-	
 	@Column(name = "starttime")
 	private String starttime;
 	
@@ -59,14 +56,13 @@ public class flight implements Serializable {
 
 	
 
-	public flight(int id, String flightno, String airline, Date traveldate, String traveltime, String starttime,
-			String endtime, String source, String destination, String ticketprice) {
+	public flight(int id, String flightno, String airline, Date traveldate, String starttime,
+			String endtime, String source, String destination, String ticketprice, String duration) {
 		super();
 		this.id = id;
 		this.flightno = flightno;
 		this.airline = airline;
 		this.traveldate = traveldate;
-		this.traveltime = traveltime;
 		this.starttime = starttime;
 		this.endtime = endtime;
 		this.source = source;
@@ -77,13 +73,12 @@ public class flight implements Serializable {
 
 
 
-	public flight(String flightno, String airline, Date traveldate, String traveltime, String starttime, String endtime,
-			String source, String destination, String ticketprice) {
+	public flight(String flightno, String airline, Date traveldate, String starttime, String endtime,
+			String source, String destination, String ticketprice, String duration) {
 		super();
 		this.flightno = flightno;
 		this.airline = airline;
 		this.traveldate = traveldate;
-		this.traveltime = traveltime;
 		this.starttime = starttime;
 		this.endtime = endtime;
 		this.source = source;
@@ -132,17 +127,7 @@ public class flight implements Serializable {
 	public void setTraveldate(Date traveldate) {
 		this.traveldate = traveldate;
 	}
-
-
-	public String getTraveltime() {
-		return traveltime;
-	}
-
-
-	public void setTraveltime(String traveltime) {
-		this.traveltime = traveltime;
-	}
-
+	
 
 	public String getStarttime() {
 		return starttime;
@@ -208,7 +193,7 @@ public class flight implements Serializable {
 	@Override
 	public String toString() {
 		return "flight [id=" + id + ", flightno=" + flightno + ", airline=" + airline + ", traveldate=" + traveldate
-				+ ", traveltime=" + traveltime + ", starttime=" + starttime + ", endtime=" + endtime + ", source="
+				 + ", starttime=" + starttime + ", endtime=" + endtime + ", source="
 				+ source + ", destination=" + destination + ", ticketprice=" + ticketprice + ", duration=" + duration
 				+ "]";
 	}

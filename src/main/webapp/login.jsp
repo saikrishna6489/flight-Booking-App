@@ -19,6 +19,7 @@
 </style>
 </head>
 <body>
+<%@ include file = "header.jsp" %>
 	<div class="container">
 	<div class="row topmar">
 	<div class="col-6" >
@@ -37,6 +38,7 @@
 			</div>
 
 			<button type="submit" class="btn btn-primary">Submit</button>
+			<p>Not Registered Yet <a href="/flight/registeruser.jsp">Click here</a></p>
 		</form>
 		</div>
 	</div>

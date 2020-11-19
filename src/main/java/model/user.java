@@ -24,13 +24,13 @@ public class user implements Serializable {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "email")
+	@Column(unique = true, name = "email")
 	private String email;
 	
 	@Column(name = "phone")
 	private String phone;
 	
-	@Column(name = "user_name")
+	@Column(unique = true, name = "username")
 	private String username;
 	
 	@Column(name = "password")
@@ -57,6 +57,14 @@ public class user implements Serializable {
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {

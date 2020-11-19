@@ -70,13 +70,13 @@
 				      <label for="hrs">Travel time:</label>
 				      <div class="form-row">
 				      <select class="form-control col" id="hrs" name="hours">
-				        <option selected>Hours</option>
+				        <option>Hours</option>
 				        <option value="1">1</option>
 				        <option value="2">2</option>
 				        <option value="3">3</option>
 				      </select>
 				      <select class="form-control col" id="min" name="minutes">
-				        <option selected>Minutes</option>
+				        <option>Minutes</option>
 				        <option value="1">1</option>
 				        <option value="2">2</option>
 				        <option value="3">3</option>

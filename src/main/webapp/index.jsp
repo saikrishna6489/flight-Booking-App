@@ -52,42 +52,8 @@
 </style>
 </head>
 	<body>
-		<div class="tm-main-content" id="top">
-            <div class="tm-top-bar-bg"></div>
-            <div class="tm-top-bar" id="tm-top-bar">
-                <!-- Top Navbar -->
-                <div class="container">
-                    <div class="row">
-                        
-                        <nav class="navbar navbar-expand-lg narbar-light">
-                            <a class="navbar-brand mr-auto" href="#">
-                                <img src="img/logo.png" alt="Site logo">
-                                Level
-                            </a>
-                            <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
-                                <ul class="navbar-nav ml-auto">
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="#top">Home <span class="sr-only">(current)</span></a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="#tm-section-4">Portfolio</a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="#tm-section-5">Blog Entries</a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="#tm-section-6">Contact Us</a>
-                                  </li>
-                                </ul>
-                            </div>                            
-                        </nav>            
-                    </div>
-                </div>
-            </div>
-            </div>
+
+            <%@ include file = "header.jsp" %>
             <div class="tm-section tm-bg-img" id="tm-section-1">
             	<div class="row">
                 <div class="tm-bg-white ie-container-width-fix-2">
@@ -152,7 +118,7 @@
                                         </div>
                                       </div>
                                       <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
-                                          <p class="tm-margin-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                          <p class="tm-margin-b-0">flights are available from date   to date   .</p>
                                           <a href="#" class="ie-10-ml-auto ml-auto mt-1 tm-font-semibold tm-color-primary">Need Help?</a>
                                       </div>
                                 </form>
@@ -218,7 +184,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col text-center">
-                            <h2 class="tm-section-title">We are here to help you?</h2>
+                            <h2 class="tm-section-title">HAVE A HAPPY JOURNEY</h2>
                             <p class="tm-color-white tm-section-subtitle">Subscribe to get our newsletters</p>
                             <a href="#" class="tm-color-white tm-btn-white-bordered">Subscribe Newletters</a>
                         </div>                

@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.userDao;
+import model.user;
 
 /**
  * @email Ramesh Fadatare
@@ -43,9 +45,12 @@ public class LoginController extends HttpServlet {
 			throws Exception {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+		HttpSession usersession= request.getSession();
 		if (loginDao.validate(username, password)) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("login-success.jsp");
+			user loguser = loginDao.userdetailbyusername(username);
+			System.out.println(loguser);
+			usersession.setAttribute("loguser", loguser);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("userdashboard");
 			dispatcher.forward(request, response);
 		}else {
 			System.out.println(username+""+password);
