@@ -28,6 +28,22 @@ public class flightDao {
 		}
 		return flights;
 	}
+	public static List<String> selectAllairlines(){
+		Transaction transaction = null;
+		List<String> flights = null;
+		try (Session session = HibernateMain.getSessionFactory().openSession()) {
+
+			transaction = session.beginTransaction();
+			
+			flights = session.createQuery("select DISTINCT f.airline from flight f").getResultList();
+			
+			transaction.commit();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return flights;
+	}
 	public static List<flight> selectQueryflights(String travelfrom, String travelto, Date date){
 		Transaction transaction = null;
 		List<flight> flights = null;

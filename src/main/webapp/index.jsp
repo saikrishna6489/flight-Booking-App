@@ -129,30 +129,6 @@
                 </div>               
             </div>
             <div class="flightstore container"> 
-            	<div class="flightbox">    
-            	<div class="row">
-		            <div class="col-2">
-		                <img>
-		                <h6>flight-name</h6>
-		                <p>flight-no</p>
-		            </div>
-		            <div class="col-2">
-		                <h3>06:50 - 09.00</h3>
-		                <p>delhi - bombay</p>
-		            </div>
-		            <div class="col-4">
-		                <h6>non-stop</h6>
-		                <p>2h10m</p>
-		            </div>
-		            <div class="col-2">
-		                from<h3>Rs 5005</h3>
-		                <p>190 instant off</p>
-		            </div>
-		            <div class="col-2">
-		                <a type="submit" class="btn btn-danger" href="detailsform.jsp">BOOK</a>
-		            </div>
-		        </div>
-	            </div>
 	            <c:forEach var="flight" items="${listflights}">
 	                <div class="flightbox">    
 	            	<div class="row">

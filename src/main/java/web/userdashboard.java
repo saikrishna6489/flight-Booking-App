@@ -46,11 +46,8 @@ public class userdashboard extends HttpServlet {
 		user user = (user) usersession.getAttribute("loguser");
 		int userid = user.getId();
 		List<booking> bookinglists = bookingDao.selectbookingsbyuserid(userid);
-		for (booking bookInfo : bookinglists) {
-	        System.out.println(bookInfo);
-	    }
 		request.setAttribute("bookinglists", bookinglists);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard.jsp");
 		dispatcher.forward(request, response);
 	}
 

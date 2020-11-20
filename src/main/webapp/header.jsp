@@ -25,25 +25,27 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    	<%	
+    	<%
     		String s=(String)session.getAttribute("isAdmin");
 			if(session.getAttribute("loguser")!=null)
 			{
 		%>
-		<a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="">Dashboard</a>
+			<p>Hi <c:out value='${loguser.username}'/>! </p>
+			<a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/flight/userdashboard">User Dashboard</a>
+		
         <a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/flight/logout.jsp">Logout</a>
 		<%}
-		
-     
 			
 			else if (s!=null)
 			{
 		%>
-		<a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/flight/adminflights.jsp">Dashboard</a>
+		<p>Hi Admin! </p>
+		<a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/flight/adminflights.jsp">Admin Dashboard</a>
         <a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/flight/logout.jsp">Logout</a>
         <%}
 			else
 		{%>
+		<p>Hi Guest! </p>
 		<a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/flight/login.jsp">Login</a>
 		<%}%>
         

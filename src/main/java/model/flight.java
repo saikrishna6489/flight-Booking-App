@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -49,6 +50,8 @@ public class flight implements Serializable {
 	@Column(name = "duration")
 	private String duration;
 	
+	@OneToOne
+    private booking booking;
 	
 	public flight() {
 		super();
@@ -85,6 +88,21 @@ public class flight implements Serializable {
 		this.destination = destination;
 		this.ticketprice = ticketprice;
 		this.duration = duration;
+	}
+	
+	public flight(String flightno, String airline, Date traveldate, String starttime, String endtime, String source,
+			String destination, String ticketprice, String duration, model.booking booking) {
+		super();
+		this.flightno = flightno;
+		this.airline = airline;
+		this.traveldate = traveldate;
+		this.starttime = starttime;
+		this.endtime = endtime;
+		this.source = source;
+		this.destination = destination;
+		this.ticketprice = ticketprice;
+		this.duration = duration;
+		this.booking = booking;
 	}
 
 
@@ -186,6 +204,18 @@ public class flight implements Serializable {
 
 	public void setDuration(String duration) {
 		this.duration = duration;
+	}
+
+	
+
+	public booking getBooking() {
+		return booking;
+	}
+
+
+
+	public void setBooking(booking booking) {
+		this.booking = booking;
 	}
 
 

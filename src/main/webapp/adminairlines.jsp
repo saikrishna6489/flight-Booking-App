@@ -26,25 +26,18 @@
 				<a class="btn btn-outline-primary btn-lg btn-block" href="Adminflights">master list of flights</a>
 			</div>
 			<div class = "col-4">
-				<a class="btn btn-primary btn-lg btn-block" href="Admincities">master list of cities</a>
+				<a class="btn btn-outline-primary btn-lg btn-block" href="Admincities">master list of cities</a>
 			</div>
 			<div class = "col-4">
-				<a class="btn btn-outline-primary btn-lg btn-block" href="Adminairlines">master list of airlines</a>
+				<a class="btn btn-primary btn-lg btn-block" href="Adminairlines">master list of airlines</a>
 			</div>
 		</div>
 	</div>
 	<div class="contain2">
 		<div class="row">
-		<form action="admininsertplace">
-			<input class="form-control" type="text" name="cityname">
-			<button type="submit" class="btn btn-primary">ADD NEW PLACE</button>
-		</form>
-		</div>
-		<div class="row">
-			<c:forEach var="place" items="${listallplaces}">
+			<c:forEach var="airline" items="${listallairlines}">
 	            <div class="col-md-6">
-	                <h5><c:out value="${place.placename}"/></h5>
-	                <a class="btn btn-danger" href="admindeleteplace?id=<c:out value='${place.id}'/>">DELETE</a>
+	                <h5><c:out value="${airline}"/></h5>
 	            </div>
             </c:forEach>
 		</div>

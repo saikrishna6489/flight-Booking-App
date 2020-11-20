@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<div class="row personsdetails">
-		<c:forEach var="person" items="${personslist}">
+		<c:forEach var="person" items="${personslist1}">
 			<div class="col-4">
 				<p>First name: <c:out value="${person.firstname}"/></p>
 			</div>

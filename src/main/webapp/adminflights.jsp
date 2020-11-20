@@ -67,7 +67,7 @@
 				<a class="btn btn-outline-primary btn-lg btn-block" href="Admincities">master list of cities</a>
 			</div>
 			<div class = "col-4">
-				<a class="btn btn-outline-primary btn-lg btn-block" href="">master list of airlines</a>
+				<a class="btn btn-outline-primary btn-lg btn-block" href="Adminairlines">master list of airlines</a>
 			</div>
 		</div>
 		<div class="row">

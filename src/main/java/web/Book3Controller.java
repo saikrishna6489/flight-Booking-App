@@ -2,8 +2,10 @@ package web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,13 +57,13 @@ public class Book3Controller extends HttpServlet {
 		Date traveldate = flightdetail.getTraveldate();
 		String cardno = request.getParameter("card");
 		
-		bookingDao.bookticket(flightid, userid, bookingemail, traveldate, personsno, bookingtime, cardno);
+		bookingDao.bookticket(flightid, userid, bookingemail, traveldate, personsno, flightdetail, bookingtime, cardno);
 		booking bookingdetail = bookingDao.bookingdetailbyemailandtime(bookingemail, bookingtime);
 		
 		int bookingid = bookingdetail.getId();
 		int rate = Integer.parseInt(flightdetail.getTicketprice());
 		int ticrate = rate*personsno;
-		
+		ArrayList<person> arrlist = new ArrayList<person>(5); 
 		for(int i=1;i<personsno+1;i++) {
 			String fn = String.format("firstname%s", i);
 			String firstname = request.getParameter(fn);
@@ -69,17 +71,30 @@ public class Book3Controller extends HttpServlet {
 			String lastname = request.getParameter(ln);
 			String gnd = String.format("gender%s", i);
 			String gender = request.getParameter(gnd);
-			bookingDao.insertperson(bookingid, firstname, lastname, gender);
+			person bookperson = new person(bookingid, firstname, lastname, gender); 
+			arrlist.add(bookperson);
 			System.out.println(firstname);
 			System.out.println(lastname);
 			System.out.println(gender);
 		}
+		for( person strDay : arrlist ){
+		    System.out.println(strDay);
+		}
+		bookingDao.insertpersonlist(arrlist);
 		List<person> personslist = bookingDao.selectpersonsbybookingid(bookingid);
+		bookingDao.updatebooking(bookingdetail, personslist);
+		booking bookingdetail1 = bookingDao.bookingdetailbyemailandtime(bookingemail, bookingtime);
+		bookingDao.updatebooking(bookingdetail1, personslist);
+		Set<person> personslist1 = bookingdetail1.getPersons();
+		for( person strDay : personslist1 ){
+		    System.out.println(strDay);
+		    System.out.println("success");
+		}
 		request.setAttribute("flightdetail", flightdetail);
-		request.setAttribute("bookingdetail", bookingdetail);
+		request.setAttribute("bookingdetail", bookingdetail1);
 		request.setAttribute("personsno", personsno);
 		request.setAttribute("user", user);
-		request.setAttribute("personslist", personslist);
+		request.setAttribute("personslist1", personslist);
 		request.setAttribute("ticrate", ticrate);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("bookingsuccesspage.jsp");
 		dispatcher.forward(request, response);

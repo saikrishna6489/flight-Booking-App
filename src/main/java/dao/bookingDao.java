@@ -1,8 +1,10 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -54,16 +56,51 @@ public class bookingDao {
 		}
 		
 	}
+	public static void insertpersonlist(ArrayList<person> arrlist){
+		Transaction transaction = null;
+		try (Session session = HibernateMain.getSessionFactory().openSession()) {
+
+			session.beginTransaction();
+			for( person p : arrlist ){
+				session.save(p);
+			}			
+			session.getTransaction().commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public static void updatebooking(booking bookingdetail, List<person> personslist){
+		Transaction transaction = null;
+		try (Session session = HibernateMain.getSessionFactory().openSession()) {
+
+			session.beginTransaction();
+			Set<person> persons = new HashSet<person>();;
+			for (person temp : personslist) {
+	            persons.add(temp);
+	        }
+			
+			bookingdetail.setPersons(persons);;
+			session.saveOrUpdate(bookingdetail);
+			
+			session.getTransaction().commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	public static String timenow(){
         DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
         Date date = new Date();
         String time=dateFormat.format(date);
         return time;
     }
-	public static void bookticket(int flightid, int userid, String bookingemail, Date traveldate, int personsno, String bookingtime, String cardno){
-		Transaction transaction = null;
+	public static void bookticket(int flightid, int userid, String bookingemail, Date traveldate, int personsno, model.flight flight, String bookingtime, String cardno){
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
-    		booking ticket = new booking(flightid, userid, bookingemail, traveldate, personsno, bookingtime, cardno);
+    		booking ticket = new booking(flightid, userid, bookingemail, traveldate, personsno, flight, bookingtime, cardno);
 
     		session.beginTransaction();
     		

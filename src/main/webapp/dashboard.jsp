@@ -17,19 +17,43 @@
 </head>
 <body>
 	<div class="detailsbox">
+	<p>welcome to dashboard</p>
+	<c:forEach var="booking" items="${bookinglists}">
 	<div class="margin">
-		<h4>User Details</h4>
-		<div class="row">
-			<div class="form-group col">
-		    </div>
-		    <div class="form-group col">
-		    </div>
-		    <div class="form-group col">
-		    </div>
-		    <div class="form-group col">
-		    </div>
+		<div class="row flightdetails">
+			<div class="col-12">
+				<h4>Flight Details</h4>
+			</div>
+			<div class="col-4">
+				<p>Flight no: <c:out value="${booking.flight.flightno}"/></p>
+				<p>Airline: <c:out value="${booking.flight.airline}"/></p>
+				<p>Source: <c:out value="${booking.flight.source}"/></p>
+				<p>Destination: <c:out value="${booking.flight.destination}"/></p>
+			</div>
+			<div class="col-4">
+				<p>duration: <c:out value="${booking.flight.duration}"/></p>
+				<p>Ticket Fare: Rs <c:out value="${booking.flight.ticketprice}"/></p>
+				<p>Total price: Rs <c:out value="${booking.flight.ticketprice*booking.personsno}"/></p>
+				<p>Card no: <c:out value="${booking.cardno}"/></p>
+			</div>
+			<div class="col-4">
+				<p>Travel date: <c:out value="${booking.flight.traveldate}"/></p>
+				<p>Booking id: <c:out value="${booking.id}"/></p>
+				<p>Arriving time: <c:out value="${booking.flight.starttime}"/></p>
+				<p>Departure time: <c:out value="${booking.flight.endtime}"/></p>
+			</div>
+		</div>
+		<div class="row personsdetails">
+		<c:forEach var="person" items="${booking.persons}">
+			<div class="col-4">
+				<p>First name: <c:out value="${person.firstname}"/></p>
+				<p>Last name: <c:out value="${person.lastname}"/></p>
+				<p>Gender: <c:out value="${person.gender}"/></p>
+			</div>
+		</c:forEach>
 		</div>
 	</div>
+	</c:forEach>
 	</div>
 	
 </body>

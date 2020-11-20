@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +31,9 @@ public class person implements Serializable {
 	@Column(name = "gender")
 	private String gender;
 	
+	@ManyToOne
+    private booking booking;
+	
 	public person() {
 		super();
 	}
@@ -42,6 +46,15 @@ public class person implements Serializable {
 		this.gender = gender;
 	}
 	
+	public person(int bookingid, String firstname, String lastname, String gender, model.booking booking) {
+		super();
+		this.bookingid = bookingid;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.booking = booking;
+	}
+
 	public int getBookingid() {
 		return bookingid;
 	}
@@ -72,6 +85,28 @@ public class person implements Serializable {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(booking booking) {
+		this.booking = booking;
+	}
+
+	@Override
+	public String toString() {
+		return "person [id=" + id + ", bookingid=" + bookingid + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", gender=" + gender + ", booking=" + booking + "]";
 	}
 	
 }

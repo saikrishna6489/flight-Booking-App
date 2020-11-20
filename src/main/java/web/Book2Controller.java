@@ -39,7 +39,9 @@ public class Book2Controller extends HttpServlet {
 		u.setLastName(request.getParameter("lastname"));
 		u.setPhone(request.getParameter("phone"));
 		u.setEmail(request.getParameter("email"));
+		if(request.getParameter("id")!= "") {
 		u.setId(Integer.parseInt(request.getParameter("id")));
+		}
 		HttpSession booksession= request.getSession(false);
 		booksession.setAttribute("user", u);
 		response.sendRedirect("paymentpage.jsp");
