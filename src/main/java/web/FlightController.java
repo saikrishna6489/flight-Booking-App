@@ -55,11 +55,14 @@ public class FlightController extends HttpServlet {
 		System.out.println(travelpersons);
 		HttpSession booksession= request.getSession();
 		booksession.setAttribute("tpersons", travelpersons);
+		System.out.println("uhh");
 		List<flight> listflights = flightDao.selectQueryflights(travelfrom, travelto, date);
 		for (flight bookInfo : listflights) {
+			System.out.println("uhh");
 	        System.out.println(bookInfo);
 	    }
 		request.setAttribute("listflights", listflights);
+		System.out.println("uhh");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}

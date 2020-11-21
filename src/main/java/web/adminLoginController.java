@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.adminDao;
+import dao.userDao;
+import model.user;
 
 @WebServlet("/Adminlogin")
 public class adminLoginController extends HttpServlet {
@@ -42,11 +44,17 @@ public class adminLoginController extends HttpServlet {
 
 		if (adminDao.validate(username, password)) {
 			HttpSession adminsession= request.getSession();
+			adminsession.setAttribute("adminerrlogmessage", "");
 			adminsession.setAttribute("isAdmin", "yes");
+			user Adminuser = userDao.userdetailbyusername(username);
+			adminsession.setAttribute("Adminuser", Adminuser);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
 			dispatcher.forward(request, response);
 		}else {
-			System.out.println(username+""+password);
+			HttpSession adminsession= request.getSession();
+			adminsession.setAttribute("adminerrlogmessage", "wrong username or password");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 }

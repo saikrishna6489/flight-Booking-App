@@ -11,30 +11,42 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 .contain1{
-	padding:30px 15%;
+	padding:80px 15% 30px 15%;
 }
 .contain2{
 	padding:30px 25%;
+}
+.box{
+	background-color: #97b498;
+    border-radius: 26px;
+    padding: 25px 11px;
+}
+.box h2{
+	color:white;
 }
 </style>
 </head>
 <body>
 <body>
+<%@ include file = "header.jsp" %>
 	<div class="contain1">
 		<div class="row">
-			<div class = "col-4">
-				<button class="btn btn-primary btn-lg btn-block">master list of flights</button>
+			<div class = "col-3">
+				<a class="btn btn-primary btn-lg btn-block" href="Adminflights">master list of flights</a>
 			</div>
-			<div class = "col-4">
-				<button class="btn btn-primary btn-lg btn-block">master list of cities</button>
+			<div class = "col-3">
+				<a class="btn btn-outline-primary btn-lg btn-block" href="Admincities">master list of cities</a>
 			</div>
-			<div class = "col-4">
-				<button class="btn btn-primary btn-lg btn-block">master list of airlines</button>
+			<div class = "col-3">
+				<a class="btn btn-outline-primary btn-lg btn-block" href="Adminairlines">master list of airlines</a>
+			</div>
+			<div class = "col-3">
+				<a class="btn btn-outline-primary btn-lg btn-block" href="adminchangepassword.jsp">Change password</a>
 			</div>
 		</div>
 	</div>
 	<div class="contain2">
-		<div class="row">
+		<div class="row box">
 			<div class="col">
 			<h2>ADD FLIGHT</h2>
 				<form action="admininsertflight" method="post">
@@ -89,18 +101,18 @@
 				      <label for="hrs">From</label>
 				      <select class="form-control col" id="hrs" name="source">
 				        <option selected>From:</option>
-				        <option value="Banglore">Banglore</option>
-				        <option value="Delhi">Delhi</option>
-				        <option value="Mumbai">Mumbai</option>
+				        <c:forEach var="place" items="${bookinplaces}">
+                          <option value="<c:out value="${place}"/>"><c:out value="${place}"/></option>
+                        </c:forEach>
 				      </select>
 				    </div>
 				    <div class="form-group col">
 				      <label for="min">To:</label>
 				      <select class="form-control col" id="min" name="destination">
 				        <option selected>To</option>
-				        <option value="Banglore">Banglore</option>
-				        <option value="Delhi">Delhi</option>
-				        <option value="Mumbai">Mumbai</option>
+				        <c:forEach var="place" items="${bookinplaces}">
+                          <option value="<c:out value="${place}"/>"><c:out value="${place}"/></option>
+                        </c:forEach>
 				      </select>
 				    </div>
 				    <div class="form-group col">
@@ -108,7 +120,7 @@
 				      <input type="number" class="form-control" id="ticketprice" name="ticketprice">
 				    </div>
 				  </div>
-				  <button type="submit" class="btn btn-primary">ADD FLIGHT</button>
+				  <button type="submit" class="btn btn-success">ADD FLIGHT</button>
 				</form>
             </div>
 		</div>

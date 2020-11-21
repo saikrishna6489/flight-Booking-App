@@ -13,42 +13,55 @@
 	.detailsbox{
 		padding:120px 20% 80px 20%;
 	}
+	.person{
+		border-radius:15px;
+	}
+	.flightdetails{
+		border-radius:15px;
+	}
+	.marg{
+		background-color: #d5ffcc87;
+		border-radius:15px;
+	}
 </style>
 </head>
 <body>
+<%@ include file = "header.jsp" %>
 	<div class="detailsbox">
-	<p>welcome to dashboard</p>
+	<div class="d-flex flex-row justify-content-center">
+		<p style="font-size:20px; font-weight:bold;">Welcome to DASHBOARD</p>
+	</div>
 	<c:forEach var="booking" items="${bookinglists}">
-	<div class="margin">
-		<div class="row flightdetails">
+	<div class="marg alert alert-light">
+		<div class="row flightdetails alert alert-danger">
 			<div class="col-12">
 				<h4>Flight Details</h4>
 			</div>
 			<div class="col-4">
-				<p>Flight no: <c:out value="${booking.flight.flightno}"/></p>
-				<p>Airline: <c:out value="${booking.flight.airline}"/></p>
-				<p>Source: <c:out value="${booking.flight.source}"/></p>
-				<p>Destination: <c:out value="${booking.flight.destination}"/></p>
+				<p><strong>Flight no: </strong><c:out value="${booking.flight.flightno}"/></p>
+				<p><strong>Airline: </strong><c:out value="${booking.flight.airline}"/></p>
+				<p><strong>Source: </strong><c:out value="${booking.flight.source}"/></p>
+				<p><strong>Destination: </strong><c:out value="${booking.flight.destination}"/></p>
 			</div>
 			<div class="col-4">
-				<p>duration: <c:out value="${booking.flight.duration}"/></p>
-				<p>Ticket Fare: Rs <c:out value="${booking.flight.ticketprice}"/></p>
-				<p>Total price: Rs <c:out value="${booking.flight.ticketprice*booking.personsno}"/></p>
-				<p>Card no: <c:out value="${booking.cardno}"/></p>
+				<p><strong>duration: </strong><c:out value="${booking.flight.duration}"/></p>
+				<p><strong>Ticket Fare: Rs </strong><c:out value="${booking.flight.ticketprice}"/></p>
+				<p><strong>Total price: Rs </strong><c:out value="${booking.flight.ticketprice*booking.personsno}"/></p>
+				<p><strong>Card no: </strong><c:out value="${booking.cardno}"/></p>
 			</div>
 			<div class="col-4">
-				<p>Travel date: <c:out value="${booking.flight.traveldate}"/></p>
-				<p>Booking id: <c:out value="${booking.id}"/></p>
-				<p>Arriving time: <c:out value="${booking.flight.starttime}"/></p>
-				<p>Departure time: <c:out value="${booking.flight.endtime}"/></p>
+				<p><strong>Travel date: </strong><c:out value="${booking.flight.traveldate}"/></p>
+				<p><strong>Booking id: </strong><c:out value="${booking.id}"/></p>
+				<p><strong>Arriving time: </strong><c:out value="${booking.flight.starttime}"/></p>
+				<p><strong>Departure time: </strong><c:out value="${booking.flight.endtime}"/></p>
 			</div>
 		</div>
 		<div class="row personsdetails">
 		<c:forEach var="person" items="${booking.persons}">
-			<div class="col-4">
-				<p>First name: <c:out value="${person.firstname}"/></p>
-				<p>Last name: <c:out value="${person.lastname}"/></p>
-				<p>Gender: <c:out value="${person.gender}"/></p>
+			<div class="col-4 person alert alert-success">
+				<p><strong>First name: </strong><c:out value="${person.firstname}"/></p>
+				<p><strong>Last name: </strong><c:out value="${person.lastname}"/></p>
+				<p><strong>Gender: </strong><c:out value="${person.gender}"/></p>
 			</div>
 		</c:forEach>
 		</div>

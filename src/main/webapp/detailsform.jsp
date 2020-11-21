@@ -9,12 +9,38 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">  
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/details.css">  
+<style>
+.detailsbox{
+	padding-top: 47px;
+}
+.marginleft{
+	margin-left:500px;
+}
+.margin{
+	margin:50px 30%;
+}
+.nomar{
+	margin-left: 0px;
+	margin-top: 0.55rem;
+}
+.nimar{
+	margin-bottom: 0.3rem;
+}
+.buttons a,button{
+	width: 100px;
+}
+.formbox{
+	background-color: beige;
+    padding: 21px;
+    border-radius: 21px;
+}
+</style>
 </head>
 <body>
+<%@ include file = "header.jsp" %>
 	<div class="detailsbox">
 	<div class="margin">
-		<form action="bookpayment">
+		<form action="bookpayment" class="formbox">
 		
 		  <h4>User Details</h4>
 		  <div class="row">
@@ -39,14 +65,18 @@
 		    <input type="hidden" class="form-control" id="exampleInputid1" name="id" value="<c:out value="${loguser.id}"/>">
 		  </div>
 		
-		  <div class="">
+		  <div class="buttons">
 		  	  <small id="info" class="form-text text-muted">We'll never share your phone no and email with anyone else.</small>
-			  <a class="btn btn-primary"> BACK </a>
+			  <a class="btn btn-primary" onclick="goBack()"> BACK </a>
 			  <button type="submit" class="btn btn-primary"> NEXT </button>
 		  </div>
 		</form>
 	</div>
 	</div>
-	
+	<script>
+		function goBack() {
+  			window.history.back();
+		}
+</script>
 </body>
 </html>

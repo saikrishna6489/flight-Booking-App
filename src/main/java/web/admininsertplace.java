@@ -3,6 +3,7 @@ package web;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -43,12 +44,16 @@ public class admininsertplace extends HttpServlet {
 	private void insertplaceform(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException, ParseException {
 		place u = new place();
+		HttpSession adminsession= request.getSession();
 		String placename = request.getParameter("cityname");
 		u.setPlacename(placename);
 		placeDao.insertplace(u);
 		System.out.println("placename::"+placename);
+		List<String> places = placeDao.selectDistintplacenames();
+		adminsession.setAttribute("bookinplaces", places);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Admincities");
 		dispatcher.forward(request, response);
+		
 	}
 
 }

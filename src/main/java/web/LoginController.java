@@ -49,11 +49,14 @@ public class LoginController extends HttpServlet {
 		if (loginDao.validate(username, password)) {
 			user loguser = loginDao.userdetailbyusername(username);
 			System.out.println(loguser);
+			usersession.setAttribute("usererrlogmessage", "");
 			usersession.setAttribute("loguser", loguser);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("userdashboard");
 			dispatcher.forward(request, response);
 		}else {
-			System.out.println(username+""+password);
+			usersession.setAttribute("usererrlogmessage", "wrong username or password");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 }

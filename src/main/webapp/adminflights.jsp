@@ -11,16 +11,23 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 .contain1{
-	padding:30px 15%;
+	padding:80px 10% 30px 10%;
+}
+.wholeflightsbox{
+	padding:0px 10% 0px 10%;
 }
 .flightstore{
 	background-color:black;
 	padding:15px;
 }
 .flightbox{
-	background-color:white;
+	background-color: #c2ebc0;
 	border-radius:10px;
 	margin:15px;
+	border: 4px solid #649b9a;
+}
+.flightbox:hover{
+	background-color: #dfe9a0;
 }
 .detailsbox{
 	background-color:black;
@@ -43,9 +50,15 @@
 }
 .options{
 	padding-left: 39px;
+	padding-top: 8px;
 }
 .options a{
 	margin-bottom:5px;
+}
+.addbutton{
+	margin-right: 132px;
+    margin-top: 22px;
+    margin-bottom: 3px;
 }
 </style>
 </head>
@@ -58,23 +71,26 @@
 		%>
 	<%@ include file = "header.jsp" %>
 	<div class="contain1">
-	<h3><c:out value="${isAdmin}"/></h3>
+
 		<div class="row">
-			<div class = "col-4">
+			<div class = "col-3">
 				<a class="btn btn-primary btn-lg btn-block" href="Adminflights">master list of flights</a>
 			</div>
-			<div class = "col-4">
+			<div class = "col-3">
 				<a class="btn btn-outline-primary btn-lg btn-block" href="Admincities">master list of cities</a>
 			</div>
-			<div class = "col-4">
+			<div class = "col-3">
 				<a class="btn btn-outline-primary btn-lg btn-block" href="Adminairlines">master list of airlines</a>
 			</div>
+			<div class = "col-3">
+				<a class="btn btn-outline-primary btn-lg btn-block" href="adminchangepassword.jsp">Change password</a>
+			</div>
+		</div>
+		<div class="d-flex flex-row justify-content-end">
+			<a class="btn btn-success addbutton" href="adminflightinsert.jsp">ADD NEW FLIGHT</a>
 		</div>
 		<div class="row">
-			<a class="btn btn-outline-primary" href="adminflightinsert.jsp">ADD NEW FLIGHT</a>
-		</div>
-		<div class="row">
-			<div class="col">
+			<div class="col wholeflightsbox">
 			<c:forEach var="flight" items="${listallflights}">
 	                <div class="flightbox">    
 	            	<div class="row">
@@ -97,7 +113,7 @@
 			            </div>
 			            <div class="col-2 options">
 			                <a type="submit" class="btn btn-danger" href="admindeleteflight?id=<c:out value='${flight.id}'/>">DELETE</a>
-			                <a type="submit" class="btn btn-danger" href="adminflighteditform?id=<c:out value='${flight.id}' />">EDIT</a>
+			                <a type="submit" class="btn btn-warning" href="adminflighteditform?id=<c:out value='${flight.id}' />">EDIT</a>
 			            </div>
 			        </div>
 		            </div>

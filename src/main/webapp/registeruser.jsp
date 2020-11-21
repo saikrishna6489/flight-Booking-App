@@ -17,6 +17,7 @@
 </head>
 <body>
 <body>
+<%@ include file = "header.jsp" %>
 	<div class="detailsbox">
 	<div class="margin">
 		<form action="userregisterController">

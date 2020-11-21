@@ -33,6 +33,8 @@ public class adminflighteditform extends HttpServlet {
 			insertflightForm(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
+			dispatcher.forward(request, response);
 		}
 	}
 
@@ -47,13 +49,9 @@ public class adminflighteditform extends HttpServlet {
 		
 		System.out.println("now"+flight);
 		String sDate1=flight.getStarttime();  
-	    Date time1=new SimpleDateFormat("HH:mm").parse(sDate1);
 
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 	    LocalTime date7 = LocalTime.parse(sDate1, formatter);
-	    java.util.Date date = new java.util.Date();
-	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-	    System.out.println(sdf.format(date));
 	    
 		RequestDispatcher dispatcher = request.getRequestDispatcher("adminflightedit.jsp");
 		request.setAttribute("flight", flight);

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -36,7 +38,7 @@
 				<label for="uname">Password:</label> 
 				<input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
 			</div>
-
+			<p class="text-danger"><c:out value="${usererrlogmessage}"/></p>
 			<button type="submit" class="btn btn-primary">Submit</button>
 			<p>Not Registered Yet <a href="/flight/registeruser.jsp">Click here</a></p>
 		</form>
@@ -57,7 +59,7 @@
 				<label for="uname">Password:</label> 
 				<input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
 			</div>
-			
+			<p class="text-danger"><c:out value="${adminerrlogmessage}"/></p>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 		</div>

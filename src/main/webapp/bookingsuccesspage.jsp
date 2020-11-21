@@ -19,10 +19,12 @@
 </head>
 <body>
 	<%@ include file = "header.jsp" %>
-	<div class="contain1">
+	<div class="contain1 ">
+	<div class="alert alert-success">
 		<h4>your ticket has been successfully booked</h4>
+	</div>
 	<div class="userdetails">
-		<div class="row userdetails">
+		<div class="row userdetails alert alert-warning">
 			<div class="col-12">
 				<h4>User Details</h4>
 			</div>
@@ -35,7 +37,8 @@
 				<p>Phone number: <c:out value="${user.phone}"/></p>
 			</div>
 		</div>
-		<div class="row flightdetails">
+		<div>
+		<div class="row flightdetails alert alert-info">
 			<div class="col-12">
 				<h4>Flight Details</h4>
 			</div>
@@ -56,7 +59,10 @@
 				<p>Card no: <c:out value="${bookingdetail.cardno}"/></p>
 			</div>
 		</div>
-		<div class="row personsdetails">
+		</div>
+		<div class="personsdetails alert alert-secondary">
+		<h4>Traveller Details:</h4>
+		<div class="row">
 		<c:forEach var="person" items="${personslist1}">
 			<div class="col-4">
 				<p>First name: <c:out value="${person.firstname}"/></p>
@@ -68,6 +74,7 @@
 				<p>Gender: <c:out value="${person.gender}"/></p>
 			</div>
 		</c:forEach>
+		</div>
 		</div>
 	</div>
 	</div>

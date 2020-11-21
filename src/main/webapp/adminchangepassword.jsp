@@ -14,13 +14,7 @@
 	padding:80px 10% 30px 10%;
 }
 .contain2{
-	padding:30px 25%;
-}
-.pbox{
-	margin:8px;
-	background-color: #bbdbc4;
-	padding:10px;
-	border-radius: 10px;
+	padding:30px 15%;
 }
 </style>
 </head>
@@ -36,21 +30,24 @@
 				<a class="btn btn-outline-primary btn-lg btn-block" href="Admincities">master list of cities</a>
 			</div>
 			<div class = "col-3">
-				<a class="btn btn-primary btn-lg btn-block" href="Adminairlines">master list of airlines</a>
+				<a class="btn btn-outline-primary btn-lg btn-block" href="Adminairlines">master list of airlines</a>
 			</div>
 			<div class = "col-3">
-				<a class="btn btn-outline-primary btn-lg btn-block" href="adminchangepassword.jsp">Change password</a>
+				<a class="btn btn-primary btn-lg btn-block" href="adminchangepassword.jsp">Change password</a>
 			</div>
 		</div>
 	</div>
-	<div class="contain2">
-	    <h3 style="text-align: center;">AIRLINES</h3>
+	<div class="contain2 d-flex flex-row justify-content-center">
 		<div class="row">
-			<c:forEach var="airline" items="${listallairlines}">
-	            <div class="col-md-6 pbox">
-	                <h5 style="text-align: center;"><c:out value="${airline}"/></h5>
-	            </div>
-            </c:forEach>
+			<form action="Adminpasschange" method="post">
+			<label style="font-weight: bold;" for="password">New Password:</label> 
+			<div class=" d-flex flex-row justify-content-center">
+				<input type="password" class="form-control" id="password" placeholder="Type your Password" name="password" required>
+				<button type="submit" class="btn btn-success">Change password</button>
+			</div>
+
+			
+		</form>
 		</div>
 	</div>
 </body>

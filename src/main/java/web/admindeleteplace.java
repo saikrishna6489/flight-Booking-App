@@ -2,6 +2,7 @@ package web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,7 +45,10 @@ public class admindeleteplace extends HttpServlet {
 		}else {
 			System.out.println("place deleting failed");
 		}
+		HttpSession adminsession= request.getSession();
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Admincities");
+		List<String> places = placeDao.selectDistintplacenames();
+		adminsession.setAttribute("bookinplaces", places);
 		dispatcher.forward(request, response);
 	}
 

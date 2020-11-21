@@ -49,7 +49,7 @@ public class admineditflight extends HttpServlet {
 		u.setStarttime(request.getParameter("starttime"));
 		u.setTicketprice(request.getParameter("ticketprice"));
 		String sDate1=request.getParameter("traveldate");  
-	    Date date1=new SimpleDateFormat("dd-MM-yyyy").parse(sDate1);
+		Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
 		u.setTraveldate(date1);
 		String hours = request.getParameter("hours");
 		String minutes = request.getParameter("minutes");

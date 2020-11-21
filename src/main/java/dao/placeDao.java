@@ -30,7 +30,22 @@ public class placeDao {
 		}
 		return places;
 	}
+	public static List<String> selectDistintplacenames(){
+		Transaction transaction = null;
+		List<String> Places = null;
+		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
+			transaction = session.beginTransaction();
+			
+			Places = session.createQuery("select DISTINCT p.placename from place p").getResultList();
+			
+			transaction.commit();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return Places;
+	}
 	public static void insertplace(String placename){
 		Transaction transaction = null;
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {

@@ -82,6 +82,21 @@ public class adminDao {
 		}
 		
 	}
+	public static void changepassword(user User){
+		Transaction transaction = null;
+		try (Session session = HibernateMain.getSessionFactory().openSession()) {
+
+			session.beginTransaction();
+			
+			session.saveOrUpdate(User);
+			
+			session.getTransaction().commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	public static boolean deleteflight(int id){
 		Transaction transaction = null;
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {

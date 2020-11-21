@@ -11,32 +11,44 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 .contain1{
-	padding:30px 15%;
+	padding:80px 15% 30px 15%;
 }
 .contain2{
 	padding:30px 25%;
+}
+.box{
+	background-color: #97b498;
+    border-radius: 26px;
+    padding: 25px 11px;
+}
+.box h2{
+	color:white;
 }
 </style>
 </head>
 <body>
 <body>
+<%@ include file = "header.jsp" %>
 	<div class="contain1">
 		<div class="row">
-			<div class = "col-4">
-				<button class="btn btn-primary btn-lg btn-block">master list of flights</button>
+			<div class = "col-3">
+				<a class="btn btn-primary btn-lg btn-block" href="Adminflights">master list of flights</a>
 			</div>
-			<div class = "col-4">
-				<button class="btn btn-primary btn-lg btn-block">master list of cities</button>
+			<div class = "col-3">
+				<a class="btn btn-outline-primary btn-lg btn-block" href="Admincities">master list of cities</a>
 			</div>
-			<div class = "col-4">
-				<button class="btn btn-primary btn-lg btn-block">master list of airlines</button>
+			<div class = "col-3">
+				<a class="btn btn-outline-primary btn-lg btn-block" href="Adminairlines">master list of airlines</a>
+			</div>
+			<div class = "col-3">
+				<a class="btn btn-outline-primary btn-lg btn-block" href="adminchangepassword.jsp">Change password</a>
 			</div>
 		</div>
 	</div>
 	<div class="contain2">
-		<div class="row">
+		<div class="row box">
 			<div class="col">
-			<h2>ADD FLIGHT</h2>
+			<h2>EDIT FLIGHT</h2>
 				<form action="admineditflight" method="post">
 				  <div class="form-row">
 				    <div class="form-group col-4">
@@ -69,14 +81,14 @@
 				    <div class="form-group col-4">
 				      <label for="hrs">Travel time:</label>
 				      <div class="form-row">
-				      <select class="form-control col" id="hrs" name="hours">
-				        <option selected>Hours</option>
+				      <select class="form-control col" id="hrs" name="hours" required>
+				        <option value="">Hours</option>
 				        <option value="1">1</option>
 				        <option value="2">2</option>
 				        <option value="3">3</option>
 				      </select>
-				      <select class="form-control col" id="min" name="minutes">
-				        <option selected>Minutes</option>
+				      <select class="form-control col" id="min" name="minutes" required>
+				        <option value="">Minutes</option>
 				        <option value="1">1</option>
 				        <option value="2">2</option>
 				        <option value="3">3</option>
@@ -89,18 +101,22 @@
 				      <label for="hrs">From</label>
 				      <select class="form-control col" id="hrs" name="source">
 				        <option value="<c:out value="${flight.source}"/>" selected><c:out value="${flight.source}"/></option>
-				        <option value="Banglore">Banglore</option>
-				        <option value="Delhi">Delhi</option>
-				        <option value="Mumbai">Mumbai</option>
+				        <c:forEach var="place" items="${bookinplaces}">
+				         <c:if test = "${place != flight.source}">
+                          <option value="<c:out value="${place}"/>"><c:out value="${place}"/></option>
+                         </c:if>
+                        </c:forEach>
 				      </select>
 				    </div>
 				    <div class="form-group col">
 				      <label for="min">To:</label>
 				      <select class="form-control col" id="min" name="destination">
 				        <option value="<c:out value="${flight.destination}"/>" selected><c:out value="${flight.destination}"/></option>
-				        <option value="Banglore">Banglore</option>
-				        <option value="Delhi">Delhi</option>
-				        <option value="Mumbai">Mumbai</option>
+				        <c:forEach var="place" items="${bookinplaces}">
+				         <c:if test = "${place != flight.destination}">
+                          <option value="<c:out value="${place}"/>"><c:out value="${place}"/></option>
+                         </c:if>
+                        </c:forEach>
 				      </select>
 				    </div>
 				    <div class="form-group col">
@@ -109,7 +125,7 @@
 				    </div>
 				    <input type="hidden" name="id" value="<c:out value="${flight.id}"/>">
 				  </div>
-				  <button type="submit" class="btn btn-primary">ADD FLIGHT</button>
+				  <button type="submit" class="btn btn-primary">EDIT FLIGHT</button>
 				</form>
             </div>
 		</div>
