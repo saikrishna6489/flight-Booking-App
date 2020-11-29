@@ -26,8 +26,13 @@
 }
 </style>
 </head>
+
 <body>
-<body>
+		<%
+		String si=(String)session.getAttribute("isAdmin");
+		if(si!=null)
+		{
+		%>
 <%@ include file = "header.jsp" %>
 	<div class="contain1">
 		<div class="row">
@@ -53,53 +58,41 @@
 				  <div class="form-row">
 				    <div class="form-group col-4">
 				      <label for="flightno">Flight no:</label>
-				      <input type="text" class="form-control" id="flightno" placeholder="Flight no" name="flightno">
+				      <input type="text" class="form-control" id="flightno" placeholder="Flight no" name="flightno" required>
 				    </div>
 				    <div class="form-group col-4">
 				      <label for="airline">airline:</label>
-				      <select class="form-control" id="airline" name="airline">
+				      <select class="form-control" id="airline" name="airline" required>
 				        <option selected>Choose...</option>
-				        <option value="south">southern</option>
-				        <option value="north">deccan</option>
-				        <option value="east">indian</option>
+				        <option value="AirIndia">AirIndia</option>
+				        <option value="GoAir">GoAir</option>
+				        <option value="Deccan">Deccan</option>
+				        <option value="SpiceXpress">SpiceXpress</option>
 				      </select>
 				    </div>
 				    <div class="form-group col-4">
 				      <label for="traveldate">Travel date:</label>
-				      <input type="date" class="form-control" id="traveldate" name="traveldate">
+				      <input type="date" class="form-control" id="traveldate" name="traveldate" required>
 				    </div>
 				  </div>
 				  <div class="form-row">
 				    <div class="form-group col-4">
 				      <label for="starttime">Start time:</label>
-				      <input type="time" class="form-control" id="starttime" name="starttime">
+				      <input type="time" class="form-control" id="starttime" name="starttime" required>
+				    </div>
+				    <div class="form-group col-4">
+				      <label for="arrivaldate">Arrival date:</label>
+				      <input type="date" class="form-control" id="arrivaldate" name="arrivaldate" required>
 				    </div>
 				    <div class="form-group col-4">
 				      <label for="endtime">End time:</label>
-				      <input type="time" class="form-control" id="endtime" name="endtime">
-				    </div>
-				    <div class="form-group col-4">
-				      <label for="hrs">Travel time:</label>
-				      <div class="form-row">
-				      <select class="form-control col" id="hrs" name="hours">
-				        <option>Hours</option>
-				        <option value="1">1</option>
-				        <option value="2">2</option>
-				        <option value="3">3</option>
-				      </select>
-				      <select class="form-control col" id="min" name="minutes">
-				        <option>Minutes</option>
-				        <option value="1">1</option>
-				        <option value="2">2</option>
-				        <option value="3">3</option>
-				      </select>
-				      </div>
+				      <input type="time" class="form-control" id="endtime" name="endtime" required>
 				    </div>
 				  </div>
 				  <div class="form-row">
 				    <div class="form-group col">
 				      <label for="hrs">From</label>
-				      <select class="form-control col" id="hrs" name="source">
+				      <select class="form-control col" id="hrs" name="source" required>
 				        <option selected>From:</option>
 				        <c:forEach var="place" items="${bookinplaces}">
                           <option value="<c:out value="${place}"/>"><c:out value="${place}"/></option>
@@ -108,7 +101,7 @@
 				    </div>
 				    <div class="form-group col">
 				      <label for="min">To:</label>
-				      <select class="form-control col" id="min" name="destination">
+				      <select class="form-control col" id="min" name="destination" required>
 				        <option selected>To</option>
 				        <c:forEach var="place" items="${bookinplaces}">
                           <option value="<c:out value="${place}"/>"><c:out value="${place}"/></option>
@@ -117,7 +110,7 @@
 				    </div>
 				    <div class="form-group col">
 				      <label for="ticketprice">Fare:</label>
-				      <input type="number" class="form-control" id="ticketprice" name="ticketprice">
+				      <input type="number" class="form-control" id="ticketprice" name="ticketprice" required>
 				    </div>
 				  </div>
 				  <button type="submit" class="btn btn-success">ADD FLIGHT</button>
@@ -125,5 +118,11 @@
             </div>
 		</div>
 	</div>
+<%}
+		else
+		{
+			response.sendRedirect("login.jsp");
+		}
+%>
 </body>
 </html>

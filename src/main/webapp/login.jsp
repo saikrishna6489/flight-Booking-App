@@ -27,6 +27,9 @@
 	<div class="col-6" >
 		<div class="contain">
 		<h2 style="text-align:center">Login</h2>
+		<c:if test = "${regsucmessage !=null}">
+		<p class="alert alert-warning"><c:out value="${regsucmessage}"/></p>
+		</c:if>
 		<form action="<%=request.getContextPath()%>/login" method="post">
 
 			<div class="form-group">

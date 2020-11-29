@@ -18,7 +18,7 @@ public class place implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@Column(name = "placename")
+	@Column(name = "placename", length=20)
 	private String placename;
 	
 	public place() {

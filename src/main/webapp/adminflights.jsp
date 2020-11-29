@@ -43,7 +43,8 @@
 	padding-top: 16px;
 }
 .travelduration{
-	padding-top: 18px;
+	padding-top: 24px;
+	padding-left: 49px;
 }
 .price{
 	padding-top: 13px;
@@ -96,7 +97,7 @@
 	            	<div class="row">
 			            <div class="col-2 planeinfo">
 			                <img>
-			                <h6><c:out value="${flight.airline}"/></h6>
+			                <h6 style="color: brown; font-size: 19px;"><strong><c:out value="${flight.airline}"/></strong></h6>
 			                <p><c:out value="${flight.flightno}"/></p>
 			            </div>
 			            <div class="col-3 tourdetail">
@@ -104,11 +105,11 @@
 			                <p><c:out value="${flight.source}"/> - <c:out value="${flight.destination}"/></p>
 			            </div>
 			            <div class="col-3 travelduration">
-			                <h6>non-stop</h6>
+			                <h6 style="font-size: 18px;">Non-stop</h6>
 			                <p><c:out value="${flight.duration}"/></p>
 			            </div>
 			            <div class="col-2 price">
-			                <h3>Rs <c:out value="${flight.ticketprice}"/></h3>
+			                <h3><i class="fa fa-rupee" style="font-size:24px"></i> <c:out value="${flight.ticketprice}"/></h3>
 			                <p>190 instant off</p>
 			            </div>
 			            <div class="col-2 options">

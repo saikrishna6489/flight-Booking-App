@@ -13,10 +13,6 @@ import javax.servlet.http.HttpSession;
 import dao.userDao;
 import model.user;
 
-/**
- * @email Ramesh Fadatare
- */
-
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -47,7 +43,7 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 		HttpSession usersession= request.getSession();
 		if (loginDao.validate(username, password)) {
-			user loguser = loginDao.userdetailbyusername(username);
+			user loguser = userDao.userdetailbyusername(username);
 			System.out.println(loguser);
 			usersession.setAttribute("usererrlogmessage", "");
 			usersession.setAttribute("loguser", loguser);

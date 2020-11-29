@@ -9,8 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 
 @WebServlet("/Adminairlines")
 public class masterairlines extends HttpServlet {
@@ -31,12 +29,13 @@ public class masterairlines extends HttpServlet {
 			showplaces(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
+			dispatcher.forward(request, response);
 		}
 	}
 
 	private void showplaces(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		HttpSession adminsession= request.getSession(false);
 		List<String> listallairlines =  dao.flightDao.selectAllairlines();
 		request.setAttribute("listallairlines", listallairlines);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("adminairlines.jsp");

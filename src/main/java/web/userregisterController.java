@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.userDao;
 import model.user;
@@ -27,6 +26,7 @@ public class userregisterController extends HttpServlet {
 			showpaymentForm(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			response.sendRedirect("login.jsp");
 		}
 	}
 
@@ -37,14 +37,12 @@ public class userregisterController extends HttpServlet {
 	private void showpaymentForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		user u = new user();
-		String message;
 		u.setFirstName(request.getParameter("firstname"));
 		u.setLastName(request.getParameter("lastname"));
 		u.setPhone(request.getParameter("phone"));
 		u.setEmail(request.getParameter("email"));
 		u.setUsername(request.getParameter("username"));
 		u.setPassword(request.getParameter("password"));
-		HttpSession booksession= request.getSession(false);
 		user userbyusername = userDao.userdetailbyusername(u.getUsername());
 		user userbyemail = userDao.userdetailbyemail(u.getEmail());
 		if(userbyusername != null) {
@@ -60,7 +58,9 @@ public class userregisterController extends HttpServlet {
 		}else {
 			userDao.saveUser(u);
 		}
-		response.sendRedirect("login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+		request.setAttribute("regsucmessage", "user registered successfully");
+		dispatcher.forward(request, response);
 		System.out.println(u);
 	}
 

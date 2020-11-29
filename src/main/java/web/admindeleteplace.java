@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.adminDao;
 import dao.placeDao;
-import model.user;
 
 @WebServlet("/admindeleteplace")
 public class admindeleteplace extends HttpServlet {
@@ -29,6 +27,8 @@ public class admindeleteplace extends HttpServlet {
 			showpaymentForm(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
+			dispatcher.forward(request, response);
 		}
 	}
 

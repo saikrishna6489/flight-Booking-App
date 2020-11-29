@@ -3,6 +3,7 @@ package web;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +31,8 @@ public class BookController extends HttpServlet {
 			showdetailsForm(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("welcomepage");
+			dispatcher.forward(request, response);
 		}
 	}
 	
@@ -38,7 +41,6 @@ public class BookController extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession booksession= request.getSession(false);
 		booksession.setAttribute("flightid", id);
-		int noofpersons = (int) booksession.getAttribute("tpersons");
 		response.sendRedirect("detailsform.jsp");
 		System.out.println(id);
 	}

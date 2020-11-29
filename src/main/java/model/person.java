@@ -22,13 +22,13 @@ public class person implements Serializable {
 	@Column(name = "bookingid")
 	private int bookingid;
 	
-	@Column(name = "firstname")
+	@Column(name = "firstname", length=20)
 	private String firstname;
 
-	@Column(name = "lastname")
+	@Column(name = "lastname", length=20)
 	private String lastname;
 	
-	@Column(name = "gender")
+	@Column(name = "gender", length=20)
 	private String gender;
 	
 	@ManyToOne

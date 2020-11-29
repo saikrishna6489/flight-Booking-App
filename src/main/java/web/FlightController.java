@@ -34,6 +34,8 @@ public class FlightController extends HttpServlet {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("welcomepage");
+			dispatcher.forward(request, response);
 		}
 		
 	}
@@ -46,7 +48,6 @@ public class FlightController extends HttpServlet {
 		SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
 		String parameter = request.getParameter("traveldate");
 		Date date = in.parse(parameter);
-
 
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println(fmt.format(date));

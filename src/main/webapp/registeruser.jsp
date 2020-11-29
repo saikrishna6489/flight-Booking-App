@@ -25,32 +25,34 @@
 		  <div class="row">
 		  <div class="form-group col">
 		    <label for="exampleInputfirstname1">First name</label>
-		    <input type="text" class="form-control" id="exampleInputfirstname1" name="firstname" placeholder="Enter first name" value=<c:out value="${reguser.firstName}"/>>
+		    <input type="text" class="form-control" id="exampleInputfirstname1" name="firstname"   maxlength="20" placeholder="Enter first name" value="<c:out value="${reguser.firstName}"/>" required>
 		  </div>
 		  <div class="form-group col">
 		    <label for="exampleInputlastname1">Last name</label>
-		    <input type="text" class="form-control" id="exampleInputlastname1" name="lastname" placeholder="Enter last name" value=<c:out value="${reguser.lastName}"/>>
+		    <input type="text" class="form-control" id="exampleInputlastname1" name="lastname" maxlength="20" placeholder="Enter last name" value="<c:out value="${reguser.lastName}"/>" required>
 		  </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email" value=<c:out value="${reguser.email}"/>>
+		    <input type="email" class="form-control" id="exampleInputEmail1" name="email" maxlength="40" placeholder="Enter email" value="<c:out value="${reguser.email}"/>" required>
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputPhone1">Phone number</label>
-		    <input type="tel" class="form-control" id="exampleInputPhone1" name="phone" placeholder="Enter phone number" value=<c:out value="${reguser.phone}"/>>
+		    <input type="tel" class="form-control" id="exampleInputPhone1" name="phone" placeholder="Enter phone number" value="<c:out value="${reguser.phone}"/>" required>
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputPhone1">User name</label>
-		    <input type="text" class="form-control" id="exampleInputusername1" name="username" placeholder="Enter username" value=<c:out value="${reguser.username}"/>>
+		    <input type="text" class="form-control" id="exampleInputusername1" name="username" maxlength="20" placeholder="Enter username" value="<c:out value="${reguser.username}"/>" required>
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputPhone1">Password</label>
-		    <input type="text" class="form-control" id="exampleInputpassword1" name="password" placeholder="Enter password" value=<c:out value="${reguser.password}"/>>
+		    <input type="text" class="form-control" id="exampleInputpassword1" name="password" maxlength="20" placeholder="Enter password" value="<c:out value="${reguser.password}"/>" required>
 		  </div>
 		  <div class="">
 		  	  <small id="phone" class="form-text text-muted">We'll never share your phone no and email with anyone else.</small>
-		  	  <h5 class="text-danger"><c:out value="${message}"/></h5>
+		  	  <c:if test="${message!=null}">
+		  	  <h5 class="alert alert-danger"><c:out value="${message}"/></h5>
+		  	  </c:if>
 			  <button type="submit" class="btn btn-primary"> REGISTER </button>
 		  </div>
 		</form>

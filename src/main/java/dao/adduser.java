@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import model.user;
-import net.bytebuddy.asm.Advice.ArgumentHandler.Factory;
+
 
 public class adduser {
 
@@ -25,7 +25,7 @@ public class adduser {
 //    	Write the code using the Session reference to save a new java object into the table
     	try {
     		//  Lets create a new StudentDetails object
-    		user theStudent = new user("sai", "krishna", "sai12123434@gmail.com", "9490531758", "sai6489ii" ,"12136489");
+    		user theStudent = new user("sai", "krishna", "chsaikrishna6489@gmail.com", "9490531758", "sai6489" ,"password");
     		
 //    		Start the transaction
     		theSession.beginTransaction();

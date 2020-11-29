@@ -22,9 +22,16 @@
 	padding:10px;
 	border-radius: 10px;
 }
+.pbox:hover{
+	background-color: burlywood;
+}
 </style>
 </head>
-<body>
+		<%
+		String si=(String)session.getAttribute("isAdmin");
+		if(si!=null)
+		{
+		%>
 <body>
 <%@ include file = "header.jsp" %>
 	<div class="contain1">
@@ -47,11 +54,19 @@
 	    <h3 style="text-align: center;">AIRLINES</h3>
 		<div class="row">
 			<c:forEach var="airline" items="${listallairlines}">
-	            <div class="col-md-6 pbox">
+			<div class="col-md-6 placebox">
+	            <div class="d-flex flex-coloumn justify-content-center row pbox">
 	                <h5 style="text-align: center;"><c:out value="${airline}"/></h5>
 	            </div>
+	        </div>
             </c:forEach>
 		</div>
 	</div>
+<%}
+		else
+		{
+			response.sendRedirect("login.jsp");
+		}
+%>
 </body>
 </html>

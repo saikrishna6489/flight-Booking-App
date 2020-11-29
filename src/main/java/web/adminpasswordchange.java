@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.adminDao;
 import model.user;
 
 @WebServlet("/Adminpasschange")
 public class adminpasswordchange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private adminDao adminDao;
 
-	public void init() {
-		adminDao = new adminDao();
+	public adminpasswordchange() {
+		super();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -33,6 +31,8 @@ public class adminpasswordchange extends HttpServlet {
 			passwordchange(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
+			dispatcher.forward(request, response);
 		}
 	}
 
@@ -43,8 +43,9 @@ public class adminpasswordchange extends HttpServlet {
 		
 		HttpSession adminsession= request.getSession(false);
 		user User = (user) adminsession.getAttribute("Adminuser");
+		System.out.println("User");
 		User.setPassword(password);
-		adminDao.changepassword(User);
+		dao.adminDao.changepassword(User);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
 		dispatcher.forward(request, response);
 

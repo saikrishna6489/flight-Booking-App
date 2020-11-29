@@ -34,6 +34,8 @@ public class adminLoginController extends HttpServlet {
 			authenticate(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 

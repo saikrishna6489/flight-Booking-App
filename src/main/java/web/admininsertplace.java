@@ -2,10 +2,8 @@ package web;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,11 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.adminDao;
 import dao.placeDao;
-import model.flight;
 import model.place;
-import model.user;
 
 @WebServlet("/admininsertplace")
 public class admininsertplace extends HttpServlet {
@@ -34,6 +29,8 @@ public class admininsertplace extends HttpServlet {
 			insertplaceform(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
+			dispatcher.forward(request, response);
 		}
 	}
 

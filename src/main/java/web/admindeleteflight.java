@@ -9,10 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.adminDao;
-import model.user;
 
 @WebServlet("/admindeleteflight")
 public class admindeleteflight extends HttpServlet {
@@ -27,6 +25,8 @@ public class admindeleteflight extends HttpServlet {
 			showpaymentForm(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Adminflights");
+			dispatcher.forward(request, response);
 		}
 	}
 

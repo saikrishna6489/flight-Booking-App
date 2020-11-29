@@ -40,7 +40,7 @@ public class bookingDao {
 		return flightdetail;
 	}
 	public static void insertperson(int bookingid, String firstname, String lastname, String gender){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();
@@ -57,7 +57,7 @@ public class bookingDao {
 		
 	}
 	public static void insertpersonlist(ArrayList<person> arrlist){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();
@@ -72,7 +72,7 @@ public class bookingDao {
 		
 	}
 	public static void updatebooking(booking bookingdetail, List<person> personslist){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();

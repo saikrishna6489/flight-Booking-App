@@ -3,6 +3,7 @@ package web;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.bookingDao;
+import model.flight;
 import model.user;
 
 @WebServlet("/bookpayment")
@@ -25,6 +28,8 @@ public class Book2Controller extends HttpServlet {
 			showpaymentForm(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("welcomepage");
+			dispatcher.forward(request, response);
 		}
 	}
 
@@ -44,6 +49,11 @@ public class Book2Controller extends HttpServlet {
 		}
 		HttpSession booksession= request.getSession(false);
 		booksession.setAttribute("user", u);
+		int flightid = (int) booksession.getAttribute("flightid");
+		System.out.println(flightid);
+		flight flightdetail = bookingDao.flightdetailbyid(flightid);
+		System.out.println(flightdetail);
+		booksession.setAttribute("flightdetail", flightdetail);
 		response.sendRedirect("paymentpage.jsp");
 		System.out.println(u);
 		int id = (int) booksession.getAttribute("flightid");

@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">  
 <link rel="stylesheet" href="css/bootstrap.min.css">
+
 <style>
 .flightstore{
 	background-color: #00000066;
@@ -36,7 +37,8 @@
 	padding-top: 16px;
 }
 .travelduration{
-	padding-top: 18px;
+	padding-top: 24px;
+	padding-left: 49px;
 }
 .price{
 	padding-top: 13px;
@@ -66,7 +68,7 @@
     padding: 26px 20px 2px 20px;
     border-radius: 29px;
     margin-top: 111px;
-    margin-bottom: 38px;
+    margin-bottom: 4px;
 }
 .headerback{
 	background-color: #ff940021 !important;
@@ -100,6 +102,11 @@
     color: #0e008094;
     border-color: #736fa1;
 }
+.caution{
+	color: black;
+	margin-bottom: 34px;
+	padding-left: 23px;
+}
 </style>
 </head>
 	<body>
@@ -112,7 +119,7 @@
                                   <div class="d-flex flex-column form-body">
                                     <div class="form-row">
                                         <div class="form-group col-6">                                            
-                                            <select class="form-control hi" id="travelfrom" name="travelfrom" style="height:53px">
+                                            <select class="form-control hi" id="travelfrom" name="travelfrom" style="height:53px" required>
                                                 <option value="">FROM</option>
                                             	<c:forEach var="place" items="${bookinplaces}">
                                                 <option value="<c:out value="${place}"/>"><c:out value="${place}"/></option>
@@ -120,7 +127,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-6">                                            
-                                            <select class="form-control hi" id="travelto" name="travelto"  style="height:53px">
+                                            <select class="form-control hi" id="travelto" name="travelto"  style="height:53px" required>
                                             	<option value="">TO</option>
                                             	<c:forEach var="place" items="${bookinplaces}">
                                                 <option value="<c:out value="${place}"/>"><c:out value="${place}"/></option>
@@ -130,10 +137,10 @@
                                     </div>
                                     <div class="form-row">
                                     	<div class="form-group col-6">
-                                            <input type="date" class="form-control"  style="height:53px" id="traveldate" value="2020-11-16" placeholder="Date of travel" name="traveldate">
+                                            <input type="date" class="form-control"  style="height:53px" id="traveldate" value="2020-12-02" placeholder="Date of travel" name="traveldate" required>
                                         </div>
                                         <div class="form-group col-6">                                            
-                                            <select class="form-control" id="travelpersons" name="travelpersons"  style="height:53px">
+                                            <select class="form-control" id="travelpersons" name="travelpersons"  style="height:53px" required>
                                                 <option value="">number of persons</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -142,6 +149,7 @@
                                                 <option value="5">5</option>
                                             </select>
                                         </div>
+                                        
                                      </div>
                                      <div class="form-row">
                                         <div class="form-group col-12 submitbutton d-flex flex-row justify-content-center">
@@ -149,7 +157,9 @@
                                         </div>
                                      </div>
                                    </div>
+                                   <p class="caution">Database is provided from 29-11-2020 to 15-12-2020 so select date in b/w</p>
                                  </form>
+                                 
                                
             </div>
             
@@ -161,7 +171,7 @@
 	            	<div class="row">
 			            <div class="col-2 planeinfo">
 			                <img>
-			                <h6><c:out value="${flight.airline}"/></h6>
+			                <h6 style="color: brown; font-size: 19px;"><strong><c:out value="${flight.airline}"/></strong></h6>
 			                <p><c:out value="${flight.flightno}"/></p>
 			            </div>
 			            <div class="col-3 tourdetail">
@@ -169,11 +179,11 @@
 			                <p><c:out value="${flight.source}"/> - <c:out value="${flight.destination}"/></p>
 			            </div>
 			            <div class="col-3 travelduration">
-			                <h6>non-stop</h6>
+			                <h6 style="font-size: 18px;">Non-stop</h6>
 			                <p><c:out value="${flight.duration}"/></p>
 			            </div>
 			            <div class="col-2 price">
-			                <h3>Rs <c:out value="${flight.ticketprice}"/></h3>
+			                <h3><i class="fa fa-rupee" style="font-size:24px"></i> <c:out value="${flight.ticketprice}"/></h3>
 			                <p>190 instant off</p>
 			            </div>
 			            <div class="col-2 options">
@@ -184,6 +194,5 @@
                 </c:forEach>
             </div>
             </div>
-            
 	</body>
 </html>

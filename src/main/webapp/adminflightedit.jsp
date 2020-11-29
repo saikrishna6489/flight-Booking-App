@@ -26,8 +26,13 @@
 }
 </style>
 </head>
+
 <body>
-<body>
+		<%
+		String si=(String)session.getAttribute("isAdmin");
+		if(si!=null)
+		{
+		%>
 <%@ include file = "header.jsp" %>
 	<div class="contain1">
 		<div class="row">
@@ -53,53 +58,41 @@
 				  <div class="form-row">
 				    <div class="form-group col-4">
 				      <label for="flightno">Flight no:</label>
-				      <input type="text" class="form-control" id="flightno" placeholder="Flight no" name="flightno" value=<c:out value="${flight.flightno}"/>>
+				      <input type="text" class="form-control" id="flightno" placeholder="Flight no" name="flightno" value=<c:out value="${flight.flightno}"/> required>
 				    </div>
 				    <div class="form-group col-4">
 				      <label for="airline">airline:</label>
-				      <select class="form-control" id="airline" name="airline" >
+				      <select class="form-control" id="airline" name="airline" required>
 				        <option value="<c:out value="${flight.airline}"/>" selected><c:out value="${flight.airline}"/></option>
-				        <option value="south">southern</option>
-				        <option value="north">deccan</option>
-				        <option value="east">indian</option>
+				        <option value="AirIndia">AirIndia</option>
+				        <option value="GoAir">GoAir</option>
+				        <option value="Deccan">Deccan</option>
+				        <option value="SpiceXpress">SpiceXpress</option>
 				      </select>
 				    </div>
 				    <div class="form-group col-4">
 				      <label for="traveldate">Travel date:</label>
-				      <input type="date" class="form-control" id="traveldate" name="traveldate" value="<c:out value="${flight.traveldate}"/>">
+				      <input type="date" class="form-control" id="traveldate" name="traveldate" value="<c:out value="${flight.traveldate}"/>" required>
 				    </div>
 				  </div>
 				  <div class="form-row">
 				    <div class="form-group col-4">
 				      <label for="starttime">Start time:</label>
-				      <input type="time" class="form-control" id="starttime" name="starttime" value="<c:out value="${starttime}"/>">
+				      <input type="time" class="form-control" id="starttime" name="starttime" value="<c:out value="${starttime}"/>" required>
+				    </div>
+				    <div class="form-group col-4">
+				      <label for="arrivaldate">Arrival date:</label>
+				      <input type="date" class="form-control" id="arrivaldate" name="arrivaldate" required>
 				    </div>
 				    <div class="form-group col-4">
 				      <label for="endtime">End time:</label>
-				      <input type="time" class="form-control" id="endtime" name="endtime" value="<c:out value="${flight.endtime}"/>">
-				    </div>
-				    <div class="form-group col-4">
-				      <label for="hrs">Travel time:</label>
-				      <div class="form-row">
-				      <select class="form-control col" id="hrs" name="hours" required>
-				        <option value="">Hours</option>
-				        <option value="1">1</option>
-				        <option value="2">2</option>
-				        <option value="3">3</option>
-				      </select>
-				      <select class="form-control col" id="min" name="minutes" required>
-				        <option value="">Minutes</option>
-				        <option value="1">1</option>
-				        <option value="2">2</option>
-				        <option value="3">3</option>
-				      </select>
-				      </div>
+				      <input type="time" class="form-control" id="endtime" name="endtime" value="<c:out value="${flight.endtime}"/>" required>
 				    </div>
 				  </div>
 				  <div class="form-row">
 				    <div class="form-group col">
 				      <label for="hrs">From</label>
-				      <select class="form-control col" id="hrs" name="source">
+				      <select class="form-control col" id="hrs" name="source" required>
 				        <option value="<c:out value="${flight.source}"/>" selected><c:out value="${flight.source}"/></option>
 				        <c:forEach var="place" items="${bookinplaces}">
 				         <c:if test = "${place != flight.source}">
@@ -110,7 +103,7 @@
 				    </div>
 				    <div class="form-group col">
 				      <label for="min">To:</label>
-				      <select class="form-control col" id="min" name="destination">
+				      <select class="form-control col" id="min" name="destination" required>
 				        <option value="<c:out value="${flight.destination}"/>" selected><c:out value="${flight.destination}"/></option>
 				        <c:forEach var="place" items="${bookinplaces}">
 				         <c:if test = "${place != flight.destination}">
@@ -121,7 +114,7 @@
 				    </div>
 				    <div class="form-group col">
 				      <label for="ticketprice">Fare:</label>
-				      <input type="number" class="form-control" id="ticketprice" name="ticketprice" value="<c:out value="${flight.ticketprice}"/>" >
+				      <input type="number" class="form-control" id="ticketprice" name="ticketprice" value="<c:out value="${flight.ticketprice}"/>" required>
 				    </div>
 				    <input type="hidden" name="id" value="<c:out value="${flight.id}"/>">
 				  </div>
@@ -130,5 +123,11 @@
             </div>
 		</div>
 	</div>
+<%}
+		else
+		{
+			response.sendRedirect("login.jsp");
+		}
+%>
 </body>
 </html>

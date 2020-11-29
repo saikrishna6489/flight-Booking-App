@@ -33,7 +33,7 @@ public class booking implements Serializable {
 	@Column(name = "userid")
 	private int userid;
 	
-	@Column(name = "bookingemail")
+	@Column(name = "bookingemail", length=30)
 	private String bookingemail;
 	
 	@Column(name="traveldate")
@@ -51,10 +51,10 @@ public class booking implements Serializable {
 	@JoinColumn(name="fid")
 	private flight flight;
 	
-	@Column(name = "bookingtime")
+	@Column(name = "bookingtime", length=20)
 	private String bookingtime;
 	
-	@Column(name = "cardno")
+	@Column(name = "cardno", length=20)
 	private String cardno;
 	
 	public booking() {

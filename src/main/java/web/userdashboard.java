@@ -3,8 +3,6 @@ package web;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.booking;
-import model.flight;
 import model.user;
 import dao.bookingDao;
-import dao.flightDao;
 
 @WebServlet("/userdashboard")
 public class userdashboard extends HttpServlet {

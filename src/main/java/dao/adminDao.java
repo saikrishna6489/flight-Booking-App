@@ -36,7 +36,7 @@ public class adminDao {
 	}
 	public static void insertflight(String flightno, String airline, Date traveldate, String traveltime, String starttime, String endtime,
 			String source, String destination, String ticketprice){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();
@@ -53,7 +53,7 @@ public class adminDao {
 		
 	}
 	public static void insertflight(flight Flight){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();
@@ -68,7 +68,7 @@ public class adminDao {
 		
 	}
 	public static void updateflight(flight Flight){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();
@@ -83,7 +83,7 @@ public class adminDao {
 		
 	}
 	public static void changepassword(user User){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();
@@ -98,7 +98,7 @@ public class adminDao {
 		
 	}
 	public static boolean deleteflight(int id){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();

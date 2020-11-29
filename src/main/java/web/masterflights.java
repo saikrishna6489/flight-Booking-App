@@ -11,18 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.adminDao;
 import dao.flightDao;
 import model.flight;
-import model.user;
 
 @WebServlet("/Adminflights")
 public class masterflights extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private adminDao adminDao;
 
-	public void init() {
-		adminDao = new adminDao();
+	public masterflights() {
+		super();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,7 +40,7 @@ public class masterflights extends HttpServlet {
 			throws Exception {
 		HttpSession adminsession= request.getSession(false);
 		List<flight> listallflights =  flightDao.selectAllflights();
-		request.setAttribute("listallflights", listallflights);
+		adminsession.setAttribute("listallflights", listallflights);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("adminflights.jsp");
 		dispatcher.forward(request, response);
 	}

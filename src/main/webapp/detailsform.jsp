@@ -46,20 +46,20 @@
 		  <div class="row">
 		  <div class="form-group col">
 		    <label for="exampleInputfirstname1">First name</label>
-		    <input type="text" class="form-control" id="exampleInputfirstname1" name="firstname" placeholder="Enter first name" value="<c:out value="${loguser.firstName}"/>">
+		    <input type="text" class="form-control" id="exampleInputfirstname1" name="firstname" maxlength="20" placeholder="Enter first name" value="<c:out value="${loguser.firstName}"/>" required>
 		  </div>
 		  <div class="form-group col">
 		    <label for="exampleInputlastname1">Last name</label>
-		    <input type="text" class="form-control" id="exampleInputlastname1" name="lastname" placeholder="Enter last name" value="<c:out value="${loguser.lastName}"/>">
+		    <input type="text" class="form-control" id="exampleInputlastname1" name="lastname" maxlength="20" placeholder="Enter last name" value="<c:out value="${loguser.lastName}"/>" required>
 		  </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email" value="<c:out value="${loguser.email}"/>">
+		    <input type="email" class="form-control" id="exampleInputEmail1" name="email" maxlength="40" placeholder="Enter email" value="<c:out value="${loguser.email}"/>" required>
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputPhone1">Phone number</label>
-		    <input type="phone" class="form-control" id="exampleInputPhone1" name="phone" placeholder="Enter phone number" value="<c:out value="${loguser.phone}"/>">
+		    <input type="phone" class="form-control" id="exampleInputPhone1" name="phone" maxlength="20" placeholder="Enter phone number" value="<c:out value="${loguser.phone}"/>" required>
 		  </div>
 		  <div class="form-group">
 		    <input type="hidden" class="form-control" id="exampleInputid1" name="id" value="<c:out value="${loguser.id}"/>">

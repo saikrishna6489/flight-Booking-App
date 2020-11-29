@@ -18,22 +18,22 @@ public class user implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@Column(name = "first_name")
+	@Column(name = "first_name", length=20)
 	private String firstName;
 	
-	@Column(name = "last_name")
+	@Column(name = "last_name", length=20)
 	private String lastName;
 	
-	@Column(unique = true, name = "email")
+	@Column(unique = true, name = "email", length=40)
 	private String email;
 	
-	@Column(name = "phone")
+	@Column(name = "phone", length=20)
 	private String phone;
 	
-	@Column(unique = true, name = "username")
+	@Column(unique = true, name = "username", length=20)
 	private String username;
 	
-	@Column(name = "password")
+	@Column(name = "password", length=20)
 	private String password;
 	
 	public user() {

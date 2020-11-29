@@ -45,8 +45,13 @@
 }
 </style>
 </head>
+
 <body>
-<body>
+		<%
+		String si=(String)session.getAttribute("isAdmin");
+		if(si!=null)
+		{
+		%>
 <%@ include file = "header.jsp" %>
 	<div class="contain1">
 		<div class="row">
@@ -65,7 +70,7 @@
 		</div>
 	</div>
 	<div class="contain2">
-		
+
 		<form action="admininsertplace">
 		  <div class="d-flex flex-row justify-content-center addplacesec">
 		   <div>
@@ -92,5 +97,11 @@
             </c:forEach>
 		</div>
 	</div>
+<%}
+		else
+		{
+			response.sendRedirect("login.jsp");
+		}
+%>
 </body>
 </html>

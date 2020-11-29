@@ -9,21 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import dao.placeDao;
-import dao.flightDao;
-import model.flight;
 import model.place;
-import model.user;
 
 @WebServlet("/Admincities")
 public class mastercities extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private placeDao placeDao;
 
-	public void init() {
-		placeDao = new placeDao();
+	public mastercities() {
+		super();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,13 +31,14 @@ public class mastercities extends HttpServlet {
 			showplaces(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("adminflights.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 
 	private void showplaces(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		HttpSession adminsession= request.getSession(false);
-		List<place> listallplaces =  placeDao.selectAllplaces();
+		List<place> listallplaces =  dao.placeDao.selectAllplaces();
 		request.setAttribute("listallplaces", listallplaces);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("adminplaces.jsp");
 		dispatcher.forward(request, response);

@@ -17,9 +17,13 @@
 	padding:30px 15%;
 }
 </style>
-</head>
+
 <body>
-<body>
+		<%
+		String si=(String)session.getAttribute("isAdmin");
+		if(si!=null)
+		{
+		%>
 <%@ include file = "header.jsp" %>
 	<div class="contain1">
 		<div class="row">
@@ -50,5 +54,11 @@
 		</form>
 		</div>
 	</div>
+<%}
+		else
+		{
+			response.sendRedirect("login.jsp");
+		}
+%>
 </body>
 </html>

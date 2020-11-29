@@ -47,7 +47,7 @@ public class placeDao {
 		return Places;
 	}
 	public static void insertplace(String placename){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();
@@ -64,7 +64,7 @@ public class placeDao {
 		
 	}
 	public static void insertplace(place Place){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();
@@ -79,7 +79,7 @@ public class placeDao {
 		
 	}
 	public static boolean deleteplace(int id){
-		Transaction transaction = null;
+
 		try (Session session = HibernateMain.getSessionFactory().openSession()) {
 
 			session.beginTransaction();

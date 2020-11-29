@@ -1,5 +1,7 @@
 package dao;
 
+import javax.persistence.NoResultException;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -22,6 +24,8 @@ public class userDao {
 			userdetail = (user) query.getSingleResult();
 
 			transaction.commit();
+		}catch (NoResultException e) {
+			return userdetail=null;
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -41,6 +45,8 @@ public class userDao {
 			userdetail = (user) query.getSingleResult();
 
 			transaction.commit();
+		}catch (NoResultException e) {
+			return userdetail=null;
 		} catch (Exception e) {
 
 			e.printStackTrace();

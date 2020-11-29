@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 	.detailsbox{
-		padding:120px 20% 80px 20%;
+		padding:110px 20% 80px 20%;
 	}
 	.person{
 		border-radius:15px;
@@ -26,16 +26,23 @@
 </style>
 </head>
 <body>
+		<%
+		if(session.getAttribute("loguser")!=null)
+		{
+		%>
 <%@ include file = "header.jsp" %>
 	<div class="detailsbox">
 	<div class="d-flex flex-row justify-content-center">
 		<p style="font-size:20px; font-weight:bold;">Welcome to DASHBOARD</p>
 	</div>
+	<div class="d-flex flex-row justify-content-start">
+		<p style="font-size:20px; font-weight:bold;">Booking History</p>
+	</div>
 	<c:forEach var="booking" items="${bookinglists}">
 	<div class="marg alert alert-light">
 		<div class="row flightdetails alert alert-danger">
 			<div class="col-12">
-				<h4>Flight Details</h4>
+				<h4><strong>Flight Details</strong></h4>
 			</div>
 			<div class="col-4">
 				<p><strong>Flight no: </strong><c:out value="${booking.flight.flightno}"/></p>
@@ -57,8 +64,10 @@
 			</div>
 		</div>
 		<div class="row personsdetails">
+		<% int i = 0; %>
 		<c:forEach var="person" items="${booking.persons}">
 			<div class="col-4 person alert alert-success">
+				<h5><strong>Traveller <% i=i+1; out.print(i); %></strong></h5>
 				<p><strong>First name: </strong><c:out value="${person.firstname}"/></p>
 				<p><strong>Last name: </strong><c:out value="${person.lastname}"/></p>
 				<p><strong>Gender: </strong><c:out value="${person.gender}"/></p>
@@ -68,6 +77,11 @@
 	</div>
 	</c:forEach>
 	</div>
-	
+        <%}
+		else
+		{
+			response.sendRedirect("login.jsp");
+		}
+        %>
 </body>
 </html>

@@ -20,7 +20,6 @@ import model.flight;
 import model.person;
 import model.user;
 import dao.bookingDao;
-import dao.flightDao;
 
 @WebServlet("/booksuccess")
 public class Book3Controller extends HttpServlet {
@@ -35,6 +34,8 @@ public class Book3Controller extends HttpServlet {
 			showpaymentForm(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("welcomepage");
+			dispatcher.forward(request, response);
 		}
 	}
 
@@ -90,14 +91,12 @@ public class Book3Controller extends HttpServlet {
 		    System.out.println(strDay);
 		    System.out.println("success");
 		}
-		request.setAttribute("flightdetail", flightdetail);
-		request.setAttribute("bookingdetail", bookingdetail1);
-		request.setAttribute("personsno", personsno);
-		request.setAttribute("user", user);
-		request.setAttribute("personslist1", personslist);
-		request.setAttribute("ticrate", ticrate);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("bookingsuccesspage.jsp");
-		dispatcher.forward(request, response);
+		booksession.setAttribute("bookingdetail", bookingdetail1);
+		booksession.setAttribute("personsno", personsno);
+		booksession.setAttribute("user", user);
+		booksession.setAttribute("personslist1", personslist);
+		booksession.setAttribute("ticrate", ticrate);
+		response.sendRedirect("bookingsuccesspage.jsp");
 	}
 
 }
