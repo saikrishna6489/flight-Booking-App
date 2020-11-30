@@ -54,7 +54,7 @@ public class booking implements Serializable {
 	@Column(name = "bookingtime", length=20)
 	private String bookingtime;
 	
-	@Column(name = "cardno", length=20)
+	@Column(name = "cardno", length=40)
 	private String cardno;
 	
 	public booking() {

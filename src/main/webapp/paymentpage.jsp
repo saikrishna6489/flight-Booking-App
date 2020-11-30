@@ -142,17 +142,17 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number">Card number</label>
-                <input type="number" class="form-control" id="cc-number" name = "card" placeholder="" required>
+                <input type="text" class="form-control" id="cc-number" name = "card" placeholder="" pattern="\d*" maxlength="16" minlength="16" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" maxlength="7" required>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YY" maxlength="4" required>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">CVV</label>
-                <input type="number" class="form-control" id="cc-cvv" placeholder="" required>
+                <input type="number" class="form-control" id="cc-cvv" placeholder="XXX" min="100" max="999" required>
               </div>
             </div>
             </div>

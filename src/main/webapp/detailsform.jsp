@@ -59,7 +59,7 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputPhone1">Phone number</label>
-		    <input type="phone" class="form-control" id="exampleInputPhone1" name="phone" maxlength="20" placeholder="Enter phone number" value="<c:out value="${loguser.phone}"/>" required>
+		    <input type="number" class="form-control" id="exampleInputPhone1" name="phone" min="1000000000" max="9999999999" placeholder="Enter phone number" value="<c:out value="${loguser.phone}"/>" required>
 		  </div>
 		  <div class="form-group">
 		    <input type="hidden" class="form-control" id="exampleInputid1" name="id" value="<c:out value="${loguser.id}"/>">
