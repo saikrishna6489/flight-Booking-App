@@ -1,0 +1,22 @@
+PHASE 2 PROJECT 
+developer:sai krishna
+
+1. Create SQL database and name it as primeflight
+
+2. Run the SQL queries from the sql.txt file provided along with the project in the sqlconsole so that flight data will be inserted 
+
+3.Run the maven project in tomcat server on version greater than V9.0
+
+4. this sql.txt file is provided with flights data from 29-11-2020 to 15-12-2020
+
+5. editing,inserting and deleting flight details can be done in admin dashboard
+
+6.To login as admin use 'admin' as username and 'admin' as password
+
+7. Password can be changed in the admin dashboard
+
+GITHUB LINK:
+
+	https://github.com/saikrishna6489/simplephase2.git
+
+*****CHROME OR FIREFOX BROWSER IS PREFEREBLE*****
